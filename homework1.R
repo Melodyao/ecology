@@ -1,5 +1,4 @@
 #########  homework 1 ###########
-
 #Loading libraries of tidyverse and ade4, as well as the doubs data into R, and checking what the data looks like and the class of the data.
 library("ade4")
 library("tidyverse")
@@ -19,8 +18,9 @@ env_tb
  #Only interested in these columns: site, dfs, slo, flo, pH, nit, oxy. Select these columns for further analysis.
  #Some column names are not intuitive. Rename them as follows: dfs to distsour, slo to slope, flo to flowrate, nit to nitrogen, oxy to oxygen.
  #Order the data. Arrange the data first by slope in ascending order, and then by pH in descending order.
-env_tb %>% 
+env_final <- env_tb %>% 
   filter(dfs>1000) %>% 
   select(site, dfs, slo, flo, pH, nit, oxy) %>% 
   rename(distsour=dfs, slope=slo, flowrate=flo, nitrogen=nit, oxygen=oxy) %>% 
   arrange(slope, desc(pH))
+env_final
